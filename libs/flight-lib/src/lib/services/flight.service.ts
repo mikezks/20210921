@@ -13,8 +13,13 @@ export class FlightService {
   // baseUrl = `http://localhost:3000`;
 
   reqDelay = 1000;
+  myNumber = 0;
+  callback: (value: number) => void = () => {};
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    // Register own callback logic
+    this.callback = value => this.myNumber = value;
+  }
 
   load(from: string, to: string, urgent: boolean): void {
     this.find(from, to, urgent).subscribe({
@@ -23,6 +28,12 @@ export class FlightService {
       },
       error: (err) => console.error('Error loading flights', err),
     });
+
+    this.callback(815);
+
+    setTimeout(() => {
+      this.callback(50_000);
+    }, 5000);
   }
 
   find(

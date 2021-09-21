@@ -25,7 +25,7 @@ export class FlightSearchComponent implements OnInit {
   };
 
   constructor(
-    private flightService: FlightService) {
+    public flightService: FlightService) {
   }
 
   ngOnInit() {
