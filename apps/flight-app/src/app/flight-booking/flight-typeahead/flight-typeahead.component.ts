@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, timer, EMPTY, Subscription, tap, share } from 'rxjs';
+import { Observable, timer, EMPTY, Subscription, tap, share, map, of } from 'rxjs';
 
 @Component({
   selector: 'flight-workspace-flight-typeahead',
@@ -13,7 +13,7 @@ export class FlightTypeaheadComponent implements OnInit, OnDestroy {
   constructor() { }
 
   ngOnInit(): void {
-    this.rxjsDemo();
+    // this.rxjsDemo();
   }
 
   rxjsDemo(): void {
@@ -24,6 +24,19 @@ export class FlightTypeaheadComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.timer$.subscribe(console.log)
     );
+
+    of([
+      'London',
+      'Rio',
+      'NY'
+    ]).pipe(
+      map(([city1, city2, city3]) => city2),
+      map(city => ({
+        id: 5,
+        cityName: city,
+        country: 'UK'
+      }))
+    ).subscribe(console.log);
   }
 
   ngOnDestroy(): void {
