@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import { FlightService } from '@flight-workspace/flight-lib';
 
 
 @Component({
@@ -7,4 +8,7 @@ import {Component} from '@angular/core';
 })
 
 export class SidebarComponent {
+  flightsCount$ = this.flightService.flightsCount$;
+
+  constructor(private flightService: FlightService) {}
 }
