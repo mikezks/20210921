@@ -5,12 +5,22 @@ export const selectFlightBookingState = createFeatureSelector<fromFlightBooking.
   fromFlightBooking.flightBookingFeatureKey
 );
 
-export const selectFlights = createSelector(
+export const selectFlights2 = createSelector(
   // Selectors
   selectFlightBookingState,
   // Projector
   state => state.flights
 );
+
+/**
+ * If the Dependency Injection Token in the FlightSearchComponent is typed like
+ * below, then the implementation with the lambda expression below works as well.
+ *
+ * constructor(private store: Store<fromFlightBooking.FlightBookingRootState>) {}
+ *
+ * Nevertheless, the createSelector() approach should be prefered.
+ */
+export const selectFlights = (s: fromFlightBooking.FlightBookingRootState) => s.flightBooking.flights;
 
 export const selectCustomFlights = createSelector(
   // Selectors
