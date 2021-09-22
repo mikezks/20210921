@@ -17,7 +17,7 @@ export class FlightSearchComponent implements OnInit {
   to = 'Graz'; // in Austria
   urgent = false;
   flights$: Observable<Flight[]> = this.store.select(
-    state => state.flightBooking.flights
+    fromFlightBooking.selectActiveUserFlights
   );
 
   // "shopping basket" with selected flights
