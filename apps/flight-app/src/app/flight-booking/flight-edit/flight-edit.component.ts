@@ -26,5 +26,6 @@ export class FlightEditComponent implements OnInit {
     this.store.select(selectRouteParams).subscribe(console.log);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   decide(answer: boolean) {}
 }

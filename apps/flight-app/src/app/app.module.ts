@@ -25,7 +25,7 @@ import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
   imports: [
     BrowserModule,
     HttpClientModule,
-    FlightBookingModule,
+    // FlightBookingModule,
 
     BrowserAnimationsModule,
     FlightCancellingModule,
