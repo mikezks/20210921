@@ -1,4 +1,7 @@
-<ng-container *ngIf="flights$ | async as flights">
+<ng-container *ngIf="{
+  flights: selectFlights$ | async,
+  filters: selectFilters$ | async
+} as state">
 
   <div class="card">
 
@@ -31,13 +34,13 @@
             Search
           </button>
 
-          <button *ngIf="flights.length" class="btn btn-default"
-            (click)="delay(flights[0])">
+          <button *ngIf="state.flights?.length" class="btn btn-default"
+            (click)="delay()">
             Delay 1st Flight
           </button>
 
-          <div *ngIf="flights.length">
-            {{flights.length}} flights found!
+          <div *ngIf="state.flights?.length">
+            {{state.flights!.length}} flights found!
           </div>
 
         </div>
@@ -46,8 +49,15 @@
     </div>
   </div>
 
+  <div *ngIf="state.filters?.length" class="card">
+    <div class="content">
+      <pre>Previous searches:
+        {{ state.filters!.slice().reverse() | json }}</pre>
+    </div>
+  </div>
+
   <div class="row">
-    <div *ngFor="let f of flights">
+    <div *ngFor="let f of state.flights">
 
       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
         <flight-card
