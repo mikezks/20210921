@@ -6,17 +6,18 @@ export const flightsLoad = createAction(
   props<{ from: string, to: string, urgent: boolean }>()
 );
 
-export const flightsLoaded = createAction(
-  '[FlightBooking] Flights loaded',
-  props<{ flights: Flight[] }>()
-);
 
 export const flightUpdate = createAction(
   '[FlightBooking] Flight update',
   props<{ flight: Flight }>()
 );
 
-/* export const loadFlightBookingsFailure = createAction(
-  '[FlightBooking] Load FlightBookings Failure',
+export const flightsLoadedSuccess = createAction(
+  '[FlightBooking] Flights loaded success',
+  props<{ flights: Flight[] }>()
+);
+
+export const flightsLoadedFailure = createAction(
+  '[FlightBooking] Flights loaded failure',
   props<{ error: any }>()
-); */
+);
